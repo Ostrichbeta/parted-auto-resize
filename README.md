@@ -1,3 +1,9 @@
+## Warning! 警告！
+
+This program may run on some device that use SD/MMC card to storage things!
+
+這個程式僅能用於將資料存儲在SD記憶卡上的設備！
+
 ## WAT
 
 in short `resize a partition non-interactive to its maximum size`
