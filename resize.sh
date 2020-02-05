@@ -15,10 +15,11 @@ fi
 DEVICE=$1
 PARTNR=$2
 APPLY=$3
+DEVICETO=$DEVICE"p"$PARTNR
 
-fdisk -l $DEVICE$PARTNR >> /dev/null 2>&1 || (echo "could not find device $DEVICE$PARTNR - please check the name" && exit 1)
+fdisk -l $DEVICETO >> /dev/null 2>&1 || (echo "could not find device $DEVICETO - please check the name" && exit 1)
 
-CURRENTSIZEB=`fdisk -l $DEVICE$PARTNR | grep "Disk $DEVICE$PARTNR" | cut -d' ' -f5`
+CURRENTSIZEB=`fdisk -l $DEVICETO | grep "Disk $DEVICETO" | cut -d' ' -f5`
 CURRENTSIZE=`expr $CURRENTSIZEB / 1024 / 1024`
 # So get the disk-informations of our device in question printf %s\\n 'unit MB print list' | parted | grep "Disk /dev/sda we use printf %s\\n 'unit MB print list' to ensure the units are displayed as MB, since otherwise it will vary by disk size ( MB, G, T ) and there is no better way to do this with parted 3 or 4 yet
 # then use the 3rd column of the output (disk size) cut -d' ' -f3 (divided by space)
